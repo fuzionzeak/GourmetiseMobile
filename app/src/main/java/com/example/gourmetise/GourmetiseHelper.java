@@ -17,8 +17,8 @@ public class GourmetiseHelper extends SQLiteOpenHelper {
                 + "nom TEXT NOT NULL,"
                 + "rue TEXT NOT NULL,"
                 + "ville TEXT NOT NULL,"
-                + "code_postal REAL NOT NULL,"
-                + "descriptif REAL NOT NULL);");
+                + "code_postal TEXT NOT NULL,"
+                + "descriptif TEXT NOT NULL);");
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
