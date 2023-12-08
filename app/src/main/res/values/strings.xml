@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Gourmetise</string>
+    <string name="Lib_liste">Liste</string>
+    <string name="libImport">IMPORTER</string>
+
+
 </resources>
