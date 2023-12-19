@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <Button
+        android:id="@+id/boutonImport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_margin="20dp"
+        android:text="@string/libImport"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
     <ImageView
         android:layout_width="563dp"
         android:layout_height="206dp"
@@ -17,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:text="La Gourmetise"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
@@ -39,12 +48,5 @@
             android:inputType="text"/>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/boutonOK"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_margin="20dp"
-        android:text="IMPORTER"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
 </LinearLayout>

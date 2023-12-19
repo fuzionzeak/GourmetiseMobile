@@ -3,8 +3,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import androidx.annotation.Nullable;
+
 public class GourmetiseHelper extends SQLiteOpenHelper {
-    public GourmetiseHelper(Context context)
+    public GourmetiseHelper(@Nullable Context context)
     {
         super(context, "baseGourmetise.db", null, 1);
     }
@@ -19,6 +21,8 @@ public class GourmetiseHelper extends SQLiteOpenHelper {
                 + "ville TEXT NOT NULL,"
                 + "code_postal TEXT NOT NULL,"
                 + "descriptif TEXT NOT NULL);");
+
+
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
