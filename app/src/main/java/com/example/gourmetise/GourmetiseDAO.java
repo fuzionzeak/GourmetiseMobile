@@ -14,7 +14,7 @@ public class GourmetiseDAO<Boulangerie> {
     }
 
     public Cursor LesBoulangeries() {
-        Cursor curseurContact = maBase.rawQuery("SELECT siren, nom, rue, ville, code_postal,descriptif, score from Boulangerie order by score DESC" , new String[] {});
+        Cursor curseurContact = maBase.rawQuery("SELECT siren, nom, rue, ville, code_postal,descriptif from Boulangerie " , new String[] {});
         return curseurContact;
     }
 
