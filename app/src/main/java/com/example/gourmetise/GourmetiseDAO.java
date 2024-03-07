@@ -29,11 +29,17 @@ public class GourmetiseDAO<Boulangerie> {
         v.put("ville", uneBoulangerie.getVille());
         v.put("code_postal", uneBoulangerie.getCode_postal());
         v.put("descriptif", uneBoulangerie.getDescriptif());
-
+        maBase.insert("Boulangerie", null, v);
 
     }
 
     public void supprimerTous() {
+        maBase.delete("Boulangerie",null,null);
+    }
+
+    public Cursor tousLesBoulangerie() {
+        Cursor curseurContact = maBase.rawQuery("SELECT siren, nom, natation, rue, ville, code_postal, descriptif from Boulangerie order by score DESC" , new String[] {});
+        return curseurContact;
     }
 
 }

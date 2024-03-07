@@ -53,25 +53,27 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.boutonImport:
+                    Log.i("info", "ok");
                     // Requête HTTP GET
-                    String urlI = "https://10.0.2.2/ANTHONY/GOURMETISE%20PROJET/API/Boulangerie.php";
+                    String urlI = "http://10.0.2.2/ANTHONY/GOURMETISEPROJET/API/Boulangerie.php";
                     AsyncHttpClient requestI = new AsyncHttpClient();
                     requestI.get(urlI, new JsonHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                             super.onSuccess(statusCode, headers, response);
+                            Log.i("info", "onsuccess ok");
 // Deserialisation du flux JSON
                             Log.i("json",response.toString());
                             bdd = new GourmetiseDAO(MainActivity.this);
                             bdd.supprimerTous();
                             for (int i = 0; i < response.length(); i++) {
                                 try {
-                                    String siren = response.getJSONObject(i).getString("sirenC");
-                                    String nom = response.getJSONObject(i).getString("nomC");
-                                    String rue = response.getJSONObject(i).getString("rueC");
-                                    String ville = response.getJSONObject(i).getString("villeC");
-                                    String codepostal = response.getJSONObject(i).getString("codepostalC");
-                                    String descriptif = response.getJSONObject(i).getString("descriptifC");
+                                    String siren = response.getJSONObject(i).getString("siren");
+                                    String nom = response.getJSONObject(i).getString("raison_sociale");
+                                    String rue = response.getJSONObject(i).getString("rue");
+                                    String ville = response.getJSONObject(i).getString("ville");
+                                    String codepostal = response.getJSONObject(i).getString("code_postal");
+                                    String descriptif = response.getJSONObject(i).getString("descriptif");
                                     Boulangerie C = new Boulangerie();
                                     C.setSiren(siren);
                                     C.setNom(nom);
@@ -91,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                             super.onFailure(statusCode, headers, responseString, throwable);
+                            Log.i("info", " on failure ok");
                             Log.i("Erreur", String.valueOf(statusCode) + "Erreur = " + responseString);
                             Toast.makeText(getApplicationContext(), "Echec de l'importation", Toast.LENGTH_LONG).show();
                         }

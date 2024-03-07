@@ -46,5 +46,17 @@ public class Boulangerie {
 
     public String getDescriptif() {return descriptif;}
     public void setDescriptif(String descriptif) {this.descriptif = descriptif;}
+
+    @Override
+    public String toString() {
+        return "Boulangerie{" +
+                "siren='" + siren + '\'' +
+                ", nom='" + nom + '\'' +
+                ", rue='" + rue + '\'' +
+                ", ville='" + ville + '\'' +
+                ", code_postal='" + code_postal + '\'' +
+                ", descriptif='" + descriptif + '\'' +
+                '}';
+    }
 }
 
