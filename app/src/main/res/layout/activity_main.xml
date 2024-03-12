@@ -40,13 +40,13 @@
             android:layout_height="wrap_content"
             android:text="Boulangerie :"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-        <EditText
-            android:id="@+id/editNom"
+        <Spinner
+            android:id="@+id/spinnerNom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:inputType="text"/>
+            android:entries=""/>
     </LinearLayout>
+
 
 
 </LinearLayout>
