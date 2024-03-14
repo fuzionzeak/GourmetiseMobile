@@ -10,8 +10,10 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,12 +26,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.entity.StringEntity;
 
 public class MainActivity extends AppCompatActivity {
-
+    Spinner spinnerBoulangerie = null;
+    private ArrayList<String> NomBoulangerie = new ArrayList<String>();
     private Button btnIMPORT = null;
 
 
@@ -88,7 +92,19 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             }
                             Toast.makeText(getApplicationContext(), "Imporation terminée", Toast.LENGTH_LONG).show();
+                            /* public void chargerSpinner() {
+                                bdd = new GourmetiseDAO(MainActivity.this); // Correction de l'usage de `this`
+                                Cursor curseurTous = bdd.LesBoulangeries(); // Correction de la méthode appelée
+                                NomBoulangerie.clear();
+                                while (curseurTous.moveToNext()) {
+                                    String nom = curseurTous.getString(curseurTous.getColumnIndex("nom")); // Utilisation de "nom"
+                                    NomBoulangerie.add(nom);
+                                }
+                                curseurTous.close(); // Ne pas oublier de fermer le curseur
+                                spinnerBoulangerie.setAdapter(new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_item, NomBoulangerie));
+                            } */
                         }
+
 
                         @Override
                         public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
