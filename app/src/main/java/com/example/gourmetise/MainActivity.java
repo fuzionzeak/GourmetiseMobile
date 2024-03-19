@@ -46,11 +46,21 @@ public class MainActivity extends AppCompatActivity {
 
         // obtention des références sur les vues de l'activité
         btnIMPORT = (Button) findViewById(R.id.boutonImport);
-
+        spinnerBoulangerie = (Spinner)findViewById(R.id.list_boulangerie);
 
         btnIMPORT.setOnClickListener(EcouteurBouton);
     }
-
+    public void chargerSpinner() {
+        bdd = new GourmetiseDAO(MainActivity.this);
+        Cursor curseurTous = bdd.LesBoulangeries();
+        NomBoulangerie.clear();
+        for(curseurTous.moveToFirst(); !curseurTous.isAfterLast(); curseurTous.moveToNext()) {
+            @SuppressLint("Range") String nom = curseurTous.getString(curseurTous.getColumnIndex("nom"));
+            NomBoulangerie.add(nom);
+        }
+        curseurTous.close();
+        spinnerBoulangerie.setAdapter(new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_item, NomBoulangerie));
+    }
     public View.OnClickListener EcouteurBouton = new View.OnClickListener() {
         @SuppressLint("Range")
         @Override
@@ -92,17 +102,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             }
                             Toast.makeText(getApplicationContext(), "Imporation terminée", Toast.LENGTH_LONG).show();
-                            /* public void chargerSpinner() {
-                                bdd = new GourmetiseDAO(MainActivity.this); // Correction de l'usage de `this`
-                                Cursor curseurTous = bdd.LesBoulangeries(); // Correction de la méthode appelée
-                                NomBoulangerie.clear();
-                                while (curseurTous.moveToNext()) {
-                                    String nom = curseurTous.getString(curseurTous.getColumnIndex("nom")); // Utilisation de "nom"
-                                    NomBoulangerie.add(nom);
-                                }
-                                curseurTous.close(); // Ne pas oublier de fermer le curseur
-                                spinnerBoulangerie.setAdapter(new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_item, NomBoulangerie));
-                            } */
+                            chargerSpinner();
                         }
 
 
